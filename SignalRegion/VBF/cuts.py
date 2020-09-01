@@ -1,6 +1,6 @@
 # cuts
 
-supercut = '   mll>12 \
+supercut = ' mll > 12 \
             && Lepton_pt[0]>25 \
             && Lepton_pt[1]>13 \
             && (nLepton>=2 && Alt$(Lepton_pt[2],0)<10) \
@@ -9,7 +9,6 @@ supercut = '   mll>12 \
             && PuppiMET_pt > 20 \
             && (Lepton_pdgId[0]*Lepton_pdgId[1] == -11*13) \
            '
-
 
 ## Signal regions
 cuts['hww2l2v_13TeV'] = {
@@ -35,7 +34,7 @@ cuts['hww2l2v_13TeV'] = {
       'em_mp_1j_pt2lt20' : ' Lepton_pdgId[0]==11 && Lepton_pt[1]<20 && oneJet && Alt$(CleanJet_pt[1],0)<30',
       'me_mp_1j_pt2lt20' : ' Lepton_pdgId[0]==-13 && Lepton_pt[1]<20 && oneJet && Alt$(CleanJet_pt[1],0)<30',
       'me_pm_1j_pt2lt20' : ' Lepton_pdgId[0]==13 && Lepton_pt[1]<20 && oneJet && Alt$(CleanJet_pt[1],0)<30',
-      #
+      # FIXME fix the mjj or additional cuts to make this orthogonal to VH2j and VBF
       '2j'               : ' (mjj<65 || mjj>105) && mjj<200 && multiJet', 
    }
 }
@@ -64,13 +63,11 @@ cuts['hww2l2v_13TeV_dytt']  = {
 
 ### WW control regions
 ### Used only for control plots, no need to add these cuts for the fit
-#cuts['hww2l2v_13TeV_ww']  = {
-#   'expr' : 'sr',
-#   # Define the sub-categorization of WW CR
-#   'categories' : {
-#      '0j' : 'zeroJet && mll>100',
-#      '1j' : 'oneJet && Alt$(CleanJet_pt[1],0)<30 && mll>100',
-#      '2j' : '(mjj<65 || mjj>105) && mjj<200 && multiJet && mll>100',
-#   }
+#cuts['hww2l2v_13TeV_WW'] = {
+#  'expr' : 'wwcr',
+#  'categories' : {
+#    '0j' : 'zeroJet',
+#    '1j' : 'oneJet && Alt$(CleanJet_pt[1],0)<30',
+#    '2j' : '(mjj<65 || mjj>105) && mjj<200 && multiJet'
+#  }
 #}
-

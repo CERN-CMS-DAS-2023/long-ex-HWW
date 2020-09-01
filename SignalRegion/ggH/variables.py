@@ -15,7 +15,6 @@ variables['events']  = {   'name': '1',
 #                        'xaxis' : 'nvtx',
 #                         'fold' : 3
 #                      }
-#
 
 variables['mll']  = {   'name': 'mll',
                         'range' : (20, 12,200),

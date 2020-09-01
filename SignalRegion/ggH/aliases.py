@@ -3,8 +3,8 @@ import copy
 import inspect
 
 configurations = os.path.realpath(inspect.getfile(inspect.currentframe())) # this file
-configurations = os.path.dirname(configurations) # Full2017_v6
-configurations = os.path.dirname(configurations) # ggH
+configurations = os.path.dirname(configurations) # ggH2018
+configurations = os.path.dirname(configurations) # Differential
 configurations = os.path.dirname(configurations) # Configurations
 
 #aliases = {}
@@ -39,7 +39,7 @@ aliases['embedtotal'] = {
     'samples': 'Dyemb'
 }
 
-# Fake leptons transfer factor
+# Fake leptons transfer factor 
 aliases['fakeW'] = {
     'expr': 'fakeW2l_ele_'+eleWP+'_mu_'+newMuWP,
     'samples': ['Fake']
@@ -84,9 +84,22 @@ aliases['PromptGenLepMatch2l'] = {
     'samples': mc
 }
 
+# PostProcessing did not create (anti)topGenPt for ST samples with _ext1
+lastcopy = (1 << 13)
+
+aliases['isTTbar'] = {
+    'expr': 'Sum$(TMath::Abs(GenPart_pdgId) == 6 && TMath::Odd(GenPart_statusFlags / %d)) == 2' % lastcopy,
+    'samples': ['top', 'Dyveto']
+}
+
+aliases['isSingleTop'] = {
+    'expr': 'Sum$(TMath::Abs(GenPart_pdgId) == 6 && TMath::Odd(GenPart_statusFlags / %d)) == 1' % lastcopy,
+    'samples': ['top', 'Dyveto']
+}
+
 aliases['Top_pTrw'] = {
-    #'expr': '(topGenPt * antitopGenPt > 0.) * (TMath::Sqrt(TMath::Exp(0.0615 - 0.0005 * topGenPt) * TMath::Exp(0.0615 - 0.0005 * antitopGenPt))) + (topGenPt * antitopGenPt <= 0.)',
-    'expr': '(topGenPt * antitopGenPt > 0.) * (TMath::Sqrt(TMath::Exp(-1.43717e-02 - 1.18358e-04*topGenPt - 1.70651e-07*topGenPt*topGenPt + 4.47969/(topGenPt+28.7)) * TMath::Exp(-1.43717e-02 - 1.18358e-04*antitopGenPt - 1.70651e-07*antitopGenPt*antitopGenPt + 4.47969/(antitopGenPt+28.7)))) + (topGenPt * antitopGenPt <= 0.)',
+    #'expr': 'isTTbar * (TMath::Sqrt(TMath::Exp(0.0615 - 0.0005 * topGenPt) * TMath::Exp(0.0615 - 0.0005 * antitopGenPt))) + isSingleTop',
+    'expr': 'isTTbar * (TMath::Sqrt(TMath::Exp(-1.43717e-02 - 1.18358e-04*topGenPt - 1.70651e-07*topGenPt*topGenPt + 4.47969/(topGenPt+28.7)) * TMath::Exp(-1.43717e-02 - 1.18358e-04*antitopGenPt - 1.70651e-07*antitopGenPt*antitopGenPt + 4.47969/(antitopGenPt+28.7)))) + isSingleTop',
     'samples': ['top']
 }
 
@@ -109,11 +122,11 @@ aliases['multiJet'] = {
 # B tagging
 
 aliases['bVeto'] = {
-    'expr': 'Sum$(CleanJet_pt > 20. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.1522) == 0'
+    'expr': 'Sum$(CleanJet_pt > 20. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.1241) == 0'
 }
 
 aliases['bReq'] = {
-    'expr': 'Sum$(CleanJet_pt > 30. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.1522) >= 1'
+    'expr': 'Sum$(CleanJet_pt > 30. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.1241) >= 1'
 }
 
 # CR definitions
@@ -136,8 +149,6 @@ aliases['sr'] = {
     'expr': 'mth>60 && mtw2>30 && bVeto'
 }
 
-# B tag scale factors
-
 aliases['bVetoSF'] = {
     'expr': 'TMath::Exp(Sum$(TMath::Log((CleanJet_pt>20 && abs(CleanJet_eta)<2.5)*Jet_btagSF_shape[CleanJet_jetIdx]+1*(CleanJet_pt<20 || abs(CleanJet_eta)>2.5))))',
     'samples': mc
@@ -153,7 +164,8 @@ aliases['btagSF'] = {
     'samples': mc
 }
 
-for shift in ['jes', 'lf', 'hf', 'lfstats1', 'lfstats2', 'hfstats1', 'hfstats2', 'cferr1', 'cferr2']:
+for shift in ['jes','lf','hf','lfstats1','lfstats2','hfstats1','hfstats2','cferr1','cferr2']:
+
     for targ in ['bVeto', 'bReq']:
         alias = aliases['%sSF%sup' % (targ, shift)] = copy.deepcopy(aliases['%sSF' % targ])
         alias['expr'] = alias['expr'].replace('btagSF_shape', 'btagSF_shape_up_%s' % shift)
@@ -171,27 +183,28 @@ for shift in ['jes', 'lf', 'hf', 'lfstats1', 'lfstats2', 'hfstats1', 'hfstats2',
         'samples': mc
     }
 
-puidSFSource = '%s/src/LatinoAnalysis/NanoGardener/python/data/JetPUID_effcyandSF.root' % os.getenv('CMSSW_BASE')
+# PU jet Id SF
+puidSFSource = '{}/patches/PUID_80XTraining_EffSFandUncties.root'.format(configurations)
 
 aliases['PUJetIdSF'] = {
     'linesToAdd': [
         'gSystem->AddIncludePath("-I%s/src");' % os.getenv('CMSSW_BASE'),
-        '.L %s/patches/pujetidsf_event.cc+' % configurations
+        '.L %s/patches/pujetidsf_event_new.cc+' % configurations
     ],
     'class': 'PUJetIdEventSF',
-    'args': (puidSFSource, '2017', 'loose'),
+    'args': (puidSFSource, '2018', 'loose'),
     'samples': mc
 }
 
 aliases['ttHMVA_SF_2l'] = {'linesToAdd': ['.L %s/patches/compute_SF.C+' % configurations],
                            'class': 'compute_SF',
-                           'args' : ('2017', 2, 'total_SF'),
+                           'args' : ('2018', 2, 'total_SF'),
                            'samples': mc_emb
                           }
 
 # data/MC scale factors
 aliases['SFweight'] = {
-    'expr': ' * '.join(['SFweight2l', 'ttHMVA_SF_2l', 'LepWPCut', 'btagSF', 'PrefireWeight','PUJetIdSF']),
+    'expr': ' * '.join(['SFweight2l', 'ttHMVA_SF_2l', 'LepWPCut', 'btagSF','PUJetIdSF']),
     'samples': mc
 }
 
@@ -214,22 +227,22 @@ aliases['SFweightMuDown'] = {
 }
 aliases['ttHMVA_SF_Up_0'] = {'linesToAdd': ['.L %s/patches/compute_SF.C+' % configurations],
                              'class': 'compute_SF',
-                             'args' : ('2017', 2, 'single_SF_up', 0),
+                             'args' : ('2018', 2, 'single_SF_up', 0),
                              'samples': mc_emb
                             }
 aliases['ttHMVA_SF_Up_1'] = {'linesToAdd': ['.L %s/patches/compute_SF.C+' % configurations],
                              'class': 'compute_SF',
-                             'args' : ('2017', 2, 'single_SF_up', 1),
+                             'args' : ('2018', 2, 'single_SF_up', 1),
                              'samples': mc_emb
                             }
 aliases['ttHMVA_SF_Down_0'] = {'linesToAdd': ['.L %s/patches/compute_SF.C+' % configurations],
                                'class': 'compute_SF',
-                               'args' : ('2017', 2, 'single_SF_down', 0),
+                               'args' : ('2018', 2, 'single_SF_down', 0),
                                'samples': mc_emb
                               }
 aliases['ttHMVA_SF_Down_1'] = {'linesToAdd': ['.L %s/patches/compute_SF.C+' % configurations],
                                'class': 'compute_SF',
-                               'args' : ('2017', 2, 'single_SF_down', 1),
+                               'args' : ('2018', 2, 'single_SF_down', 1),
                                'samples': mc_emb
                               }
 aliases['ttHMVA_2l_mu_SF_Up'] = {'expr' : '(ttHMVA_SF_Up_0*(TMath::Abs(Lepton_pdgId[0]) == 13) + (TMath::Abs(Lepton_pdgId[0]) == 11)) *\
@@ -242,9 +255,9 @@ aliases['ttHMVA_2l_mu_SF_Down'] = {'expr' : '(ttHMVA_SF_Down_0*(TMath::Abs(Lepto
                                   }
 
 aliases['Weight2MINLO'] = {
-    'linesToAdd': ['.L %s/Differential/weight2MINLO.cc+' % configurations],
     'class': 'Weight2MINLO',
     'args': '%s/src/LatinoAnalysis/Gardener/python/data/powheg2minlo/NNLOPS_reweight.root' % os.getenv('CMSSW_BASE'),
+    'linesToAdd': ['.L %s/Differential/weight2MINLO.cc+' % configurations],
     'samples' : [skey for skey in samples if 'ggH_hww' in skey],
 }
 
@@ -254,6 +267,28 @@ aliases['nCleanGenJet'] = {
     'class': 'CountGenJet',
     'samples': mc
 }
+
+# GGHUncertaintyProducer wasn't run for GluGluHToWWTo2L2Nu_M125
+thus = [
+    'ggH_mu',
+    'ggH_res',
+    'ggH_mig01',
+    'ggH_mig12',
+    'ggH_VBF2j',
+    'ggH_VBF3j',
+    'ggH_pT60',
+    'ggH_pT120',
+    'ggH_qmtop'
+]
+
+for thu in thus:
+    aliases[thu] = {
+        'linesToAdd': ['.L %s/Differential/gghuncertainty.cc+' % configurations],
+        'class': 'GGHUncertainty',
+        'args': (thu,),
+        'samples': [skey for skey in samples if 'ggH_hww' in skey],
+        'nominalOnly': True
+    }
 
 thusQQ = [
   "qqH_YIELD",
@@ -277,5 +312,3 @@ for thu in thusQQ:
         'samples': ['qqH_hww'],
         'nominalOnly': True
     }
-
-

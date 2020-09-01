@@ -1,4 +1,4 @@
-HWW VBF 2017 analysis
+HWW VBF 2018 analysis
 =====================
 
 How to run the analysis.
@@ -17,11 +17,11 @@ How to run the analysis.
 
 # Make plots:
 
-    mkPlot.py --pycfg=configuration.py --inputFile rootFile/plots_VBF2017_v6.root --onlyPlot=cratio --linearOnly --showIntegralLegend=1
+    mkPlot.py --pycfg=configuration.py --inputFile rootFile/plots_VBF2018_v6.root --onlyPlot=cratio --linearOnly --showIntegralLegend=1
 
 # Make datacards:
 
-    mkDatacards.py --pycfg configuration.py --inputFile rootFile/plots_VBF2017_v6.root
+    mkDatacards.py --pycfg configuration.py --inputFile rootFile/plots_VBF2018_v6.root
 
 # Combine datacards (also removes samples with expected yield below a given threshold) and make workspaces:
 
