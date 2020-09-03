@@ -3,9 +3,9 @@ import copy
 import inspect
 
 configurations = os.path.realpath(inspect.getfile(inspect.currentframe())) # this file
-configurations = os.path.dirname(configurations) # ggH2018
-configurations = os.path.dirname(configurations) # Differential
-configurations = os.path.dirname(configurations) # Configurations
+configurations = os.path.dirname(configurations) # ggH
+configurations = os.path.dirname(configurations) # SignalRegion
+configurations = os.path.dirname(configurations) # PlotsConfigurationsCMSDAS2020CERN
 
 #aliases = {}
 

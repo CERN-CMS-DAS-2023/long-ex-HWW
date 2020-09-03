@@ -22,9 +22,9 @@ Remember to define the file: Tools/python/userConfig.py (if not already done)
 
     mkShapesMulti.py --pycfg=configuration.py --doHadd=1 --batchSplit=Samples,Files --doNotCleanup --nThreads=10
 
-# Run a postprocessing script for the correct treatment of DY embedded uncertainties
-
-    python scripts/mkDYvetoUnc.py configuration.py
+<!-- # Run a postprocessing script for the correct treatment of DY embedded uncertainties -->
+<!--  -->
+<!--     python scripts/mkDYvetoUnc.py configuration.py -->
 
 # Make plots:
 
