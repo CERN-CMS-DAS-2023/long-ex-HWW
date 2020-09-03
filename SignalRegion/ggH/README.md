@@ -12,6 +12,8 @@ Remember to define the file: Tools/python/userConfig.py (if not already done)
     jobDirSplit=True
 
 
+    
+    
 # Produce the shapes:
 
     mkShapesMulti.py --pycfg=configuration.py --doBatch=1 --batchSplit=Samples,Files --batchQueue=workday
@@ -40,3 +42,13 @@ Remember to define the file: Tools/python/userConfig.py (if not already done)
 
     ./scripts/doFits.sh
 
+
+    
+    
+    
+Special usecase:
+
+    easyDescription.py --inputFileSamples samples.py --outputFileSamples extended_samples.py
+
+    
+    
