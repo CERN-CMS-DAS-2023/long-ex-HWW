@@ -12,6 +12,12 @@ Remember to define the file: Tools/python/userConfig.py (if not already done)
     jobDirSplit=True
 
 
+Resubmit:
+
+
+    ls -alrth /afs/cern.ch/user/a/amassiro/jobs/jobs/mkShapes__ggH2018_v6/mkShapes__ggH2018_v6__*.jid | awk '{print "condor_submit " $9}'  | sed 's/jid/jds/'
+    ls -alrth /afs/cern.ch/user/a/amassiro/jobs/jobs/mkShapes__ggH2018_v6__ALL/*/mkShapes__ggH2018_v6__*.jid | awk '{print "condor_submit " $9}'  | sed 's/jid/jds/'
+
     
     
 # Produce the shapes:
