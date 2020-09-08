@@ -28,6 +28,11 @@ Resubmit:
 
     mkShapesMulti.py --pycfg=configuration.py --doHadd=1 --batchSplit=Samples,Files --doNotCleanup --nThreads=10
 
+or
+
+    hadd rootFile/plots_ggH2018_v6_ALL.root rootFile/plots_ggH2018_v6_ALL_*.root
+    
+    
 <!-- # Run a postprocessing script for the correct treatment of DY embedded uncertainties -->
 <!--  -->
 <!--     python scripts/mkDYvetoUnc.py configuration.py -->
