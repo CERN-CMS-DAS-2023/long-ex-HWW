@@ -18,6 +18,13 @@ Resubmit:
     ls -alrth /afs/cern.ch/user/a/amassiro/jobs/jobs/mkShapes__ggH2018_v6/mkShapes__ggH2018_v6__*.jid | awk '{print "condor_submit " $9}'  | sed 's/jid/jds/'
     ls -alrth /afs/cern.ch/user/a/amassiro/jobs/jobs/mkShapes__ggH2018_v6__ALL/*/mkShapes__ggH2018_v6__*.jid | awk '{print "condor_submit " $9}'  | sed 's/jid/jds/'
 
+
+Location ntuples:
+
+    /eos/user/c/cmsdas/long-exercises/hww/Autumn18_102X_nA1loose2018v6__MCCorr2018v6__l2loose__l2tightOR2018v6/
+    from: /eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Autumn18_102X_nAODv6_Full2018v6/MCl1loose2018v6__MCCorr2018v6__l2loose__l2tightOR2018v6/
+    
+    
     
     
 # Produce the shapes:
