@@ -3,9 +3,9 @@ import copy
 import inspect
 
 configurations = os.path.realpath(inspect.getfile(inspect.currentframe())) # this file
-configurations = os.path.dirname(configurations) # ggH2018
-configurations = os.path.dirname(configurations) # Differential
-configurations = os.path.dirname(configurations) # Configurations
+configurations = os.path.dirname(configurations) # ggH
+configurations = os.path.dirname(configurations) # SignalRegion
+configurations = os.path.dirname(configurations) # PlotsConfigurationsCMSDAS2020CERN
 
 #aliases = {}
 
@@ -257,13 +257,15 @@ aliases['ttHMVA_2l_mu_SF_Down'] = {'expr' : '(ttHMVA_SF_Down_0*(TMath::Abs(Lepto
 aliases['Weight2MINLO'] = {
     'class': 'Weight2MINLO',
     'args': '%s/src/LatinoAnalysis/Gardener/python/data/powheg2minlo/NNLOPS_reweight.root' % os.getenv('CMSSW_BASE'),
-    'linesToAdd': ['.L %s/Differential/weight2MINLO.cc+' % configurations],
+    #'linesToAdd': ['.L %s/Differential/weight2MINLO.cc+' % configurations],
+    'linesToAdd': ['.L %s/patches/weight2MINLO.cc+' % configurations],
     'samples' : [skey for skey in samples if 'ggH_hww' in skey],
 }
 
 
 aliases['nCleanGenJet'] = {
-    'linesToAdd': ['.L %s/Differential/ngenjet.cc+' % configurations],
+    #'linesToAdd': ['.L %s/Differential/ngenjet.cc+' % configurations],
+    'linesToAdd': ['.L %s/patches/ngenjet.cc+' % configurations],
     'class': 'CountGenJet',
     'samples': mc
 }
@@ -283,7 +285,8 @@ thus = [
 
 for thu in thus:
     aliases[thu] = {
-        'linesToAdd': ['.L %s/Differential/gghuncertainty.cc+' % configurations],
+        #'linesToAdd': ['.L %s/Differential/gghuncertainty.cc+' % configurations],
+        'linesToAdd': ['.L %s/patches/gghuncertainty.cc+' % configurations],
         'class': 'GGHUncertainty',
         'args': (thu,),
         'samples': [skey for skey in samples if 'ggH_hww' in skey],

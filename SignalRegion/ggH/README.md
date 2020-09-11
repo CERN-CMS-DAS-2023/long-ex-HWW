@@ -24,8 +24,9 @@ Location ntuples:
     /eos/user/c/cmsdas/long-exercises/hww/Autumn18_102X_nA1loose2018v6__MCCorr2018v6__l2loose__l2tightOR2018v6/
     from: /eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Autumn18_102X_nAODv6_Full2018v6/MCl1loose2018v6__MCCorr2018v6__l2loose__l2tightOR2018v6/
     
-    
-    
+    /eos/user/c/cmsdas/long-exercises/hww/Run2018_102X_nAODv6_Full2018v6_ForNewWPs/DATAl1loose2018v6__l2loose__fakeW/
+    from: /eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Run2018_102X_nAODv6_Full2018v6_ForNewWPs/DATAl1loose2018v6__l2loose__fakeW/
+
     
 # Produce the shapes:
 

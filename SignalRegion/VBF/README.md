@@ -3,6 +3,31 @@ HWW VBF 2018 analysis
 
 How to run the analysis.
 
+Remember to define the file: Tools/python/userConfig.py (if not already done)
+    
+    #!/usr/bin/env python
+    baseDir  = '/afs/cern.ch/user/a/amassiro/jobs/'
+    jobDir   = baseDir+'jobs/'
+    workDir  = baseDir+'workspace/'
+    jobDirSplit=True
+
+
+Resubmit:
+
+
+    ls -alrth /afs/cern.ch/user/a/amassiro/jobs/jobs/mkShapes__VBF2018_v6/mkShapes__VBF2018_v6__*.jid | awk '{print "condor_submit " $9}'  | sed 's/jid/jds/'
+    ls -alrth /afs/cern.ch/user/a/amassiro/jobs/jobs/mkShapes__VBF2018_v6__ALL/*/mkShapes__VBF2018_v6__*.jid | awk '{print "condor_submit " $9}'  | sed 's/jid/jds/'
+
+
+Location ntuples:
+
+    /eos/user/c/cmsdas/long-exercises/hww/Autumn18_102X_nA1loose2018v6__MCCorr2018v6__l2loose__l2tightOR2018v6/
+    from: /eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Autumn18_102X_nAODv6_Full2018v6/MCl1loose2018v6__MCCorr2018v6__l2loose__l2tightOR2018v6/
+    
+    /eos/user/c/cmsdas/long-exercises/hww/Run2018_102X_nAODv6_Full2018v6_ForNewWPs/DATAl1loose2018v6__l2loose__fakeW/
+    from: /eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Run2018_102X_nAODv6_Full2018v6_ForNewWPs/DATAl1loose2018v6__l2loose__fakeW/
+
+    
 # Produce the shapes:
 
     mkShapesMulti.py --pycfg=configuration.py --doBatch=1 --batchSplit=Samples,Files --batchQueue=workday
@@ -11,9 +36,14 @@ How to run the analysis.
 
     mkShapesMulti.py --pycfg=configuration.py --doHadd=1 --batchSplit=Samples,Files --doNotCleanup --nThreads=10
 
-# Run a postprocessing script for the correct treatment of DY embedded uncertainties
+or
 
-    python scripts/mkDYvetoUnc.py configuration.py
+    hadd rootFile/plots_VBF2018_v6_ALL.root rootFile/plots_VBF2018_v6_ALL_*.root
+    
+    
+<!-- # Run a postprocessing script for the correct treatment of DY embedded uncertainties -->
+<!--  -->
+<!--     python scripts/mkDYvetoUnc.py configuration.py -->
 
 # Make plots:
 
@@ -31,3 +61,5 @@ How to run the analysis.
 
     ./scripts/doFits.sh
 
+
+    

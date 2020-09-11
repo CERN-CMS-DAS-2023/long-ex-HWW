@@ -1,8 +1,8 @@
-# Configuration file to produce initial root files -- has both merged and binned ggH samples
+# Configuration file to produce initial root files -- has both merged and binned VBF samples
 
 treeName = 'Events'
 
-tag = 'ggH2018_v6'
+tag = 'VBF2018_v6'
 
 # used by mkShape to define output directory for root files
 outputDir = 'rootFile'
