@@ -10,6 +10,7 @@ Install:
     git clone git@github.com:amassiro/PlotsConfigurationsCMSDAS2020CERN.git PlotsConfigurations
     cd LatinoAnalysis/Tools/python/
     cp userConfig_TEMPLATE.py userConfig.py (change the baseDir path to somewhere you have write permissions)     
+    cd -
     scram b -j4
 
     
