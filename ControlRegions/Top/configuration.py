@@ -1,8 +1,8 @@
-# Configuration file to produce initial root files 
+# Configuration file to produce initial root files
 
 treeName = 'Events'
 
-tag = 'DY2018_v6'
+tag = 'Top2018_v6'
 
 # used by mkShape to define output directory for root files
 outputDir = 'rootFile'
