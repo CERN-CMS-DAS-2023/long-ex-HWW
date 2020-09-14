@@ -7,12 +7,12 @@ Install:
     cmsenv
     git clone --branch 13TeV git@github.com:latinos/setup.git LatinosSetup
     source LatinosSetup/SetupShapeOnly.sh
+    git clone git@github.com:amassiro/PlotsConfigurationsCMSDAS2020CERN.git PlotsConfigurations
+    cd LatinoAnalysis/Tools/python/
+    cp userConfig_TEMPLATE.py userConfig.py (change the baseDir path to somewhere you have write permissions)     
     scram b -j4
 
     
- 
-
- 
  
 
 Where (temporary):
