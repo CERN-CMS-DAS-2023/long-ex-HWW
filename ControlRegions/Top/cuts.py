@@ -9,14 +9,11 @@ supercut = ' mll > 12 \
 
 ## Signal regions
 cuts['hww2l2v_13TeV'] = {
-   'expr': 'bVeto',
+   'expr': 'bReq',
     # Define the sub-categorization of sr
    'categories' : {
-      'em' : ' zeroJet  && (Lepton_pdgId[0]*Lepton_pdgId[1] == -11*13) && mth<60 && mll>40 && mll<80',
       #
-      'ee' : ' zeroJet  && (Lepton_pdgId[0]*Lepton_pdgId[1] == -11*11)',
-      #
-      'mm' : ' zeroJet  && (Lepton_pdgId[0]*Lepton_pdgId[1] == -13*13)', 
+      'em' : ' multiJet && (Lepton_pdgId[0]*Lepton_pdgId[1] == -11*13)',
       #
    }
 }
