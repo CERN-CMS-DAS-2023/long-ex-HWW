@@ -7,8 +7,7 @@ supercut = ' mll > 12 \
             && abs(Lepton_eta[0])<2.5 && abs(Lepton_eta[1])<2.5 \
            '
 
-## Signal regions
-cuts['hww2l2v_13TeV'] = {
+cuts['hww2l2v_top_13TeV'] = {
    'expr': 'bReq',
     # Define the sub-categorization of sr
    'categories' : {
@@ -18,4 +17,13 @@ cuts['hww2l2v_13TeV'] = {
    }
 }
 
+cuts['hww2l2v_2jet_13TeV'] = {
+   'expr': '1',
+    # Define the sub-categorization of sr
+   'categories' : {
+      #
+      'em' : ' multiJet && (Lepton_pdgId[0]*Lepton_pdgId[1] == -11*13)',
+      #
+   }
+}
 

@@ -22,7 +22,7 @@ Remember to define the file: Tools/python/userConfig.py (if not already done)
 
 or
 
-    hadd rootFile/plots_DY2018_v6_ALL.root rootFile/plots_DY2018_v6_ALL_*.root
+    hadd rootFile/plots_DY2018_v6.root rootFile/plots_DY2018_v6_ALL_*.root
     
 
 # Make plots:

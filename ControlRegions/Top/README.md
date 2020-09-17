@@ -28,6 +28,7 @@ or
 # Make plots:
 
     mkPlot.py --pycfg=configuration.py --inputFile rootFile/plots_Top2018_v6.root --onlyPlot=cratio --linearOnly --showIntegralLegend=1
+    mkPlot.py --pycfg=configuration.py --inputFile rootFile/plots_Top2018_v6.root --showIntegralLegend=1
 
     
     
