@@ -10,11 +10,11 @@ variables['events']  = {   'name': '1',
                         'fold' : 3
                         }
 
-#variables['nvtx']  = {   'name': 'PV_npvsGood',
-#                        'range' : (20,0,100),
-#                        'xaxis' : 'nvtx',
-#                         'fold' : 3
-#                      }
+variables['nvtx']  = {   'name': 'PV_npvsGood',
+                        'range' : (20,0,100),
+                        'xaxis' : 'nvtx',
+                         'fold' : 3
+                      }
 
 variables['mll']  = {   'name': 'mll',
                         'range' : (20, 12,200),
