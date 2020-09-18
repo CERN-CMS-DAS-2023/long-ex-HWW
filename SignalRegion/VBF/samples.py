@@ -101,7 +101,7 @@ mcCommonWeight = 'XSWeight*SFweight*PromptGenLepMatch2l*METFilter_MC'
 ###### DY #######
 
 useEmbeddedDY = True
-useDYtt = True
+useDYtt = False
 
 embed_tautauveto = '' #Setup
 if useEmbeddedDY:
