@@ -6,7 +6,7 @@ configurations = os.path.dirname(configurations) # ggH2018
 configurations = os.path.dirname(configurations) # Differential
 configurations = os.path.dirname(configurations) # Configurations
 
-from LatinoAnalysis.Tools.commonTools import getSampleFiles, getBaseW, addSampleWeight
+from LatinoAnalysis.Tools.commonTools import getSampleFiles
 
 def nanoGetSampleFiles(inputDir, sample):
     try:
@@ -37,7 +37,7 @@ fakeReco = 'Run2018_102X_nAODv6_Full2018v6_ForNewWPs'
 
 embedReco = 'Embedding2018_102X_nAODv6_Full2018v6'
 
-mcSteps = 'MCl1loose2018v6__MCCorr2018v6__l2loose__l2tightOR2018v6{var}'
+mcSteps = 'MCl1loose2018v6__MCCorr2018v6__l2loose__l2tightOR2018v6'
 
 fakeSteps = 'DATAl1loose2018v6__l2loose__fakeW'
 
@@ -49,17 +49,10 @@ embedSteps = 'DATAl1loose2018v6__l2loose__l2tightOR2018v6__Embedding'
 ###### Tree base directory for the site ######
 ##############################################
 
-SITE=os.uname()[1]
-if    'iihe' in SITE:
-  treeBaseDir = '/pnfs/iihe/cms/store/user/xjanssen/HWW2015'
-elif  'cern' in SITE:
-  treeBaseDir = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano'
+treeBaseDir = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano'
 
-def makeMCDirectory(var=''):
-    if var:
-        return os.path.join(treeBaseDir, mcProduction, mcSteps.format(var='__' + var))
-    else:
-        return os.path.join(treeBaseDir, mcProduction, mcSteps.format(var=''))
+def makeMCDirectory():
+   return os.path.join(treeBaseDir, mcProduction, mcSteps)
 
 mcDirectory = makeMCDirectory()
 fakeDirectory = os.path.join(treeBaseDir, fakeReco, fakeSteps)
@@ -116,13 +109,11 @@ else:
 
 samples['DY'] = {
     'name': files,
-    'weight': mcCommonWeight+embed_tautauveto + '*( !(Sum$(PhotonGen_isPrompt==1 && PhotonGen_pt>15 && abs(PhotonGen_eta)<2.6) > 0 &&\
+    'weight': mcCommonWeight + '*( !(Sum$(PhotonGen_isPrompt==1 && PhotonGen_pt>15 && abs(PhotonGen_eta)<2.6) > 0 &&\
                                      Sum$(LeptonGen_isPrompt==1 && LeptonGen_pt>15)>=2) )',
     'FilesPerJob': 6,
 }
-addSampleWeight(samples,'DY','DYJetsToTT_MuEle_M-50',ptllDYW_NLO)
-addSampleWeight(samples,'DY','DYJetsToLL_M-50-LO',ptllDYW_NLO)
-addSampleWeight(samples,'DY','DYJetsToLL_M-10to50-LO',ptllDYW_LO)
+
 
 
 ###########################################
