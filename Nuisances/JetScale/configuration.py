@@ -2,7 +2,7 @@
 
 treeName = 'Events'
 
-tag = 'LeptonScaleNuisance'
+tag = 'JetScaleNuisance'
 
 # used by mkShape to define output directory for root files
 outputDir = 'rootFile'

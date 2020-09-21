@@ -26,31 +26,22 @@ except NameError:
 
 ################################ EXPERIMENTAL UNCERTAINTIES  #################################
 
+##### Jet energy scale
+jes_systs = ['JESAbsolute','JESAbsolute_2018','JESBBEC1','JESBBEC1_2018','JESEC2','JESEC2_2018','JESFlavorQCD','JESHF','JESHF_2018','JESRelativeBal','JESRelativeSample_2018']
 
-nuisances['muonpt'] = {
-    'name': 'CMS_scale_m_2018',
-    'kind': 'suffix',
-    'type': 'shape',
-    'mapUp': 'MupTup',
-    'mapDown': 'MupTdo',
-    'samples': dict((skey, ['1', '1']) for skey in mc if skey not in ['VgS', 'Vg']),
-    'folderUp': makeMCDirectory('MupTup_suffix'),
-    'folderDown': makeMCDirectory('MupTdo_suffix'),
-#    'AsLnN': '1'
-}
+for js in jes_systs:
+  nuisances[js] = {
+      'name': 'CMS_scale_'+js,
+      'kind': 'suffix',
+      'type': 'shape',
+      'mapUp': js+'up',
+      'mapDown': js+'do',
+      'samples': dict((skey, ['1', '1'])  for skey in mc if skey not in ['VgS', 'Vg']),
+      'folderUp': makeMCDirectory('JESup_suffix'),
+      'folderDown': makeMCDirectory('JESdo_suffix'),
+      #'AsLnN': '1'
+  }
 
 
 
-
-nuisances['electronpt'] = {
-    'name': 'CMS_scale_e_2018',
-    'kind': 'suffix',
-    'type': 'shape',
-    'mapUp': 'ElepTup',
-    'mapDown': 'ElepTdo',
-    'samples': dict((skey, ['1', '1']) for skey in mc if skey not in ['VgS', 'Vg']),
-    'folderUp': makeMCDirectory('ElepTup_suffix'),
-    'folderDown': makeMCDirectory('ElepTdo_suffix'),
-#    'AsLnN': '1'
-}
 
