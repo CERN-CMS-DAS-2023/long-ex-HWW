@@ -101,7 +101,7 @@ mcCommonWeight = 'XSWeight*SFweight*PromptGenLepMatch2l*METFilter_MC'
 ###### DY #######
 
 useEmbeddedDY = True
-useDYtt = False
+useDYtt = True
 
 embed_tautauveto = '' #Setup
 if useEmbeddedDY:
@@ -169,7 +169,7 @@ if useDYtt:
           nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-10to50-LO')
 
 else:
-  files = nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-50_ext') + \
+  files = nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-50') + \
           nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-10to50-LO')
 
 

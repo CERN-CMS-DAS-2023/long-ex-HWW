@@ -130,7 +130,7 @@ aliases['bReq'] = {
 }
 
 # CR definitions
-#    
+
 aliases['topcr'] = {
     'expr': 'mtw2>30 && mll>50 && ((zeroJet && !bVeto) || bReq)'
 }
@@ -142,12 +142,12 @@ aliases['dycr'] = {
 aliases['wwcr'] = {
     'expr': 'mth>60 && mtw2>30 && mll>100 && bVeto'
 }
-  
+
 # SR definition
 
-#aliases['sr'] = {
-    #'expr': 'mth>60 && mtw2>30 && bVeto'
-#}
+aliases['sr'] = {
+    'expr': 'mth>60 && mtw2>30 && bVeto'
+}
 
 aliases['bVetoSF'] = {
     'expr': 'TMath::Exp(Sum$(TMath::Log((CleanJet_pt>20 && abs(CleanJet_eta)<2.5)*Jet_btagSF_shape[CleanJet_jetIdx]+1*(CleanJet_pt<20 || abs(CleanJet_eta)>2.5))))',
@@ -254,6 +254,15 @@ aliases['ttHMVA_2l_mu_SF_Down'] = {'expr' : '(ttHMVA_SF_Down_0*(TMath::Abs(Lepto
                                    'samples': mc_emb
                                   }
 
+aliases['Weight2MINLO'] = {
+    'class': 'Weight2MINLO',
+    'args': '%s/src/LatinoAnalysis/Gardener/python/data/powheg2minlo/NNLOPS_reweight.root' % os.getenv('CMSSW_BASE'),
+    #'linesToAdd': ['.L %s/Differential/weight2MINLO.cc+' % configurations],
+    'linesToAdd': ['.L %s/patches/weight2MINLO.cc+' % configurations],
+    'samples' : [skey for skey in samples if 'ggH_hww' in skey],
+}
+
+
 aliases['nCleanGenJet'] = {
     #'linesToAdd': ['.L %s/Differential/ngenjet.cc+' % configurations],
     'linesToAdd': ['.L %s/patches/ngenjet.cc+' % configurations],
@@ -261,3 +270,48 @@ aliases['nCleanGenJet'] = {
     'samples': mc
 }
 
+# GGHUncertaintyProducer wasn't run for GluGluHToWWTo2L2Nu_M125
+thus = [
+    'ggH_mu',
+    'ggH_res',
+    'ggH_mig01',
+    'ggH_mig12',
+    'ggH_VBF2j',
+    'ggH_VBF3j',
+    'ggH_pT60',
+    'ggH_pT120',
+    'ggH_qmtop'
+]
+
+for thu in thus:
+    aliases[thu] = {
+        #'linesToAdd': ['.L %s/Differential/gghuncertainty.cc+' % configurations],
+        'linesToAdd': ['.L %s/patches/gghuncertainty.cc+' % configurations],
+        'class': 'GGHUncertainty',
+        'args': (thu,),
+        'samples': [skey for skey in samples if 'ggH_hww' in skey],
+        'nominalOnly': True
+    }
+
+thusQQ = [
+  "qqH_YIELD",
+  "qqH_PTH200",
+  "qqH_Mjj60",
+  "qqH_Mjj120",
+  "qqH_Mjj350",
+  "qqH_Mjj700",
+  "qqH_Mjj1000",
+  "qqH_Mjj1500",
+  "qqH_PTH25",
+  "qqH_JET01",
+  "qqH_EWK",
+]
+
+for thu in thusQQ:
+    aliases[thu] = {
+        'linesToAdd': ['.L %s/patches/qqhuncertainty.cc+' % configurations],
+        'class': 'QQHUncertainty',
+        'args': (thu,),
+        'samples': ['qqH_hww'],
+        'nominalOnly': True
+    }
