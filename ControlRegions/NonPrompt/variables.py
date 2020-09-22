@@ -23,12 +23,12 @@ variables['mll']  = {   'name': 'mll',            #   variable name
                          'fold' : 0
                         }
 
-variables['detall']  = {   'name': 'abs(Lepton_eta[0] - Lepton_eta[1])',            #   variable name    
-                        'range' : (20,0.,10.),    #   variable range
-                        'xaxis' : 'detall',  #   x axis name
-                        'fold' : 3
-                        }
-
+# variables['detall']  = {   'name': 'abs(Lepton_eta[0] - Lepton_eta[1])',            #   variable name    
+#                         'range' : (20,0.,10.),    #   variable range
+#                         'xaxis' : 'detall',  #   x axis name
+#                         'fold' : 3
+#                         }
+# 
 
 variables['mth']  = {   'name': 'mth',            #   variable name    
                         'range' : (40,0,200),    #   variable range
