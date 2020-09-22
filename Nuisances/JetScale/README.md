@@ -16,6 +16,7 @@ or
 # Make plots:
 
     mkPlot.py --pycfg=configuration.py --inputFile rootFile/plots_JetScaleNuisance.root --onlyPlot=cratio --linearOnly --showIntegralLegend=1
+    mkPlot.py --pycfg=configuration.py --inputFile rootFile/plots_JetScaleNuisance.root --showIntegralLegend=1
 
 # Make datacards:
 
