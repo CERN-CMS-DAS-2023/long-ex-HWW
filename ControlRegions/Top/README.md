@@ -16,6 +16,14 @@ Remember to define the file: Tools/python/userConfig.py (if not already done)
 
     mkShapesMulti.py --pycfg=configuration.py --doBatch=1 --batchSplit=Samples,Files --batchQueue=workday
 
+
+Resubmit:
+
+
+    ls -alrth /afs/cern.ch/user/a/amassiro/jobs/jobs/mkShapes__Top2018_v6__ALL/mkShapes__*.jid | awk '{print "condor_submit " $9}'  | sed 's/jid/jds/'
+    ls -alrth /afs/cern.ch/user/a/amassiro/jobs/jobs/mkShapes__Top2018_v6__ALL/*/mkShapes__*.jid | awk '{print "condor_submit " $9}'  | sed 's/jid/jds/'
+
+    
 # Hadd the root files:
 
     mkShapesMulti.py --pycfg=configuration.py --doHadd=1 --batchSplit=Samples,Files --doNotCleanup --nThreads=10
