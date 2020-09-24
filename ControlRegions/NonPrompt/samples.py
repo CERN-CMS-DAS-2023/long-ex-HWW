@@ -33,7 +33,9 @@ except NameError:
 ################################################
 
 mcProduction = 'Autumn18_102X_nAODv6_Full2018v6'
+
 dataReco = 'Run2018_102X_nAODv6_Full2018v6'
+
 fakeReco = 'Run2018_102X_nAODv6_Full2018v6_ForNewWPs'
 
 mcSteps = 'MCl1loose2018v6__MCCorr2018v6__l2loose__l2tightOR2018v6{var}'

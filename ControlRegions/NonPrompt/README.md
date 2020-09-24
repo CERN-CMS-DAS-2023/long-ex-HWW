@@ -14,7 +14,7 @@ Remember to define the file: Tools/python/userConfig.py (if not already done)
     
 # Produce the shapes:
 
-    mkShapesMulti.py --pycfg=configuration.py --doBatch=1 --batchSplit=Samples,Files --batchQueue=workday
+    mkShapesMulti.py --pycfg=configuration.py --doBatch=1 --batchSplit=Samples,Files --batchQueue=tomorrow
 
 # Hadd the root files:
 
