@@ -132,7 +132,8 @@ aliases['bReq'] = {
 # CR definitions
 #    
 aliases['topcr'] = {
-    'expr': 'mtw2>30 && mll>50 && ((zeroJet && !bVeto) || bReq)'
+    #'expr': 'mtw2>30 && mll>50 && ((zeroJet && !bVeto) || bReq)'
+    'expr': '((zeroJet && !bVeto) || bReq)'
 }
 
 aliases['dycr'] = {

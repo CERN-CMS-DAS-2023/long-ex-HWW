@@ -8,7 +8,7 @@ supercut = ' mll > 12 \
            '
 
 cuts['hww2l2v_top_13TeV'] = {
-   'expr': 'bReq',
+   'expr': 'topcr && mtw2>30 && mll>50',
     # Define the sub-categorization of sr
    'categories' : {
       #
