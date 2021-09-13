@@ -29,21 +29,21 @@ except NameError:
 ################# SKIMS ########################
 ################################################
 
-mcProduction = 'Autumn18_102X_nAODv6_Full2018v6'
+mcProduction = 'Autumn18_102X_nAODv7_Full2018v7'
 
-dataReco = 'Run2018_102X_nAODv6_Full2018v6'
+dataReco = 'Run2018_102X_nAODv7_Full2018v7'
 
-fakeReco = 'Run2018_102X_nAODv6_Full2018v6_ForNewWPs'
+fakeReco = 'Run2018_102X_nAODv7_Full2018v7'
 
-embedReco = 'Embedding2018_102X_nAODv6_Full2018v6'
+embedReco = 'Embedding2018_102X_nAODv7_Full2018v7'
 
-mcSteps = 'MCl1loose2018v6__MCCorr2018v6__l2loose__l2tightOR2018v6'
+mcSteps = 'MCl1loose2018v7__MCCorr2018v7__l2loose__l2tightOR2018v7'
 
-fakeSteps = 'DATAl1loose2018v6__l2loose__fakeW'
+fakeSteps = 'DATAl1loose2018v7__l2loose__fakeW'
 
-dataSteps = 'DATAl1loose2018v6__l2loose__l2tightOR2018v6'
+dataSteps = 'DATAl1loose2018v7__l2loose__l2tightOR2018v7'
 
-embedSteps = 'DATAl1loose2018v6__l2loose__l2tightOR2018v6__Embedding'
+embedSteps = 'DATAl1loose2018v7__l2loose__l2tightOR2018v7__Embedding'
 
 ##############################################
 ###### Tree base directory for the site ######
@@ -64,7 +64,7 @@ embedDirectory = os.path.join(treeBaseDir, embedReco, embedSteps)
 ################################################
 
 DataRun = [
-            ['A','Run2018A-Nano25Oct2019-v1'] ,
+            ['A','Run2018A-02Apr2020-v1'] ,
           ]
 
 DataSets = ['MuonEG','DoubleMuon','SingleMuon','EGamma']
@@ -133,6 +133,7 @@ for _, sd in DataRun:
     files = nanoGetSampleFiles(dataDirectory, pd + '_' + sd)
     samples['DATA']['name'].extend(files)
     samples['DATA']['weights'].extend([DataTrig[pd]] * len(files))
+
 
 
 
