@@ -1,6 +1,23 @@
-# PlotsConfigurationsCMSDAS2020CERN
+# PlotsConfigurationsCMSDAS2023CERN
 
-Install:
+Twiki: https://twiki.cern.ch/twiki/bin/view/CMS/SWGuideCMSDataAnalysisSchoolCERN2023HWWLongExercise
+
+## Installation
+Singularity image:
+
+    apptainer shell   -B /afs/ -B /cvmfs --bind /tmp  --bind /eos/ --env KRB5CCNAME=$KRB5CCNAME --bind /etc/sysconfig/ngbauth-submit   -B /etc/grid-security/certificates \
+    /cvmfs/unpacked.cern.ch/gitlab-registry.cern.ch/dvalsecc/latinoanalysis-cms-das-cern-2023:lxplus-cc7-latest
+
+    # You will be now inside the image
+    # Activate the CMSSW environment with LatinosAnalysis pre-installed under /opt/CMSSW_10_6_27
+    source /usr/bin/activate-latinos
+
+    # setup an environmental variable for the location of the jobs file
+    export LATINOS_BASEDIR=/afs/cern.ch//
+
+    # You are now ready to work on Latinos configurations
+
+Manual install :
 
     cmsrel CMSSW_10_6_4
     cd CMSSW_10_6_4/src/
@@ -15,11 +32,7 @@ Install:
 
     
  
-
-Where (temporary):
-
-    /afs/cern.ch/work/a/amassiro/Latinos/Framework/CMSDAS2020CERN/CMSSW_10_6_4/src
-    
+## Content 
 First simple phase space:
 
     Z>mumu
