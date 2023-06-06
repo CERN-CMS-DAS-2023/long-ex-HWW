@@ -13,7 +13,7 @@ Singularity image:
     source /usr/bin/activate-latinos
 
     # setup an environmental variable for the location of the jobs file
-    export LATINOS_BASEDIR=/afs/cern.ch//
+    export LATINOS_BASEDIR=/afs/cern.ch/<your-preferred-location>/
 
     # You are now ready to work on Latinos configurations
 
