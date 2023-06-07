@@ -150,12 +150,12 @@ aliases['sr'] = {
 }
 
 aliases['bVetoSF'] = {
-    'expr': 'TMath::Exp(Sum$(TMath::Log((CleanJet_pt>20 && abs(CleanJet_eta)<2.5)*Jet_btagSF_shape[CleanJet_jetIdx]+1*(CleanJet_pt<20 || abs(CleanJet_eta)>2.5))))',
+    'expr': 'TMath::Exp(Sum$(TMath::Log((CleanJet_pt>20 && abs(CleanJet_eta)<2.5)*Jet_btagSF_deepcsv_shape[CleanJet_jetIdx]+1*(CleanJet_pt<20 || abs(CleanJet_eta)>2.5))))',
     'samples': mc
 }
 
 aliases['bReqSF'] = {
-    'expr': 'TMath::Exp(Sum$(TMath::Log((CleanJet_pt>30 && abs(CleanJet_eta)<2.5)*Jet_btagSF_shape[CleanJet_jetIdx]+1*(CleanJet_pt<30 || abs(CleanJet_eta)>2.5))))',
+    'expr': 'TMath::Exp(Sum$(TMath::Log((CleanJet_pt>30 && abs(CleanJet_eta)<2.5)*Jet_btagSF_deepcsv_shape[CleanJet_jetIdx]+1*(CleanJet_pt<30 || abs(CleanJet_eta)>2.5))))',
     'samples': mc
 }
 
@@ -293,25 +293,25 @@ for thu in thus:
         'nominalOnly': True
     }
 
-thusQQ = [
-  "qqH_YIELD",
-  "qqH_PTH200",
-  "qqH_Mjj60",
-  "qqH_Mjj120",
-  "qqH_Mjj350",
-  "qqH_Mjj700",
-  "qqH_Mjj1000",
-  "qqH_Mjj1500",
-  "qqH_PTH25",
-  "qqH_JET01",
-  "qqH_EWK",
-]
+# thusQQ = [
+#   "qqH_YIELD",
+#   "qqH_PTH200",
+#   "qqH_Mjj60",
+#   "qqH_Mjj120",
+#   "qqH_Mjj350",
+#   "qqH_Mjj700",
+#   "qqH_Mjj1000",
+#   "qqH_Mjj1500",
+#   "qqH_PTH25",
+#   "qqH_JET01",
+#   "qqH_EWK",
+# ]
 
-for thu in thusQQ:
-    aliases[thu] = {
-        'linesToAdd': ['.L %s/patches/qqhuncertainty.cc+' % configurations],
-        'class': 'QQHUncertainty',
-        'args': (thu,),
-        'samples': ['qqH_hww'],
-        'nominalOnly': True
-    }
+# for thu in thusQQ:
+#     aliases[thu] = {
+#         'linesToAdd': ['.L %s/patches/qqhuncertainty.cc+' % configurations],
+#         'class': 'QQHUncertainty',
+#         'args': (thu,),
+#         'samples': ['qqH_hww'],
+#         'nominalOnly': True
+#     }
