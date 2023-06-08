@@ -9,9 +9,6 @@
 # imported from cuts.py
 # cuts
 
-cuts = ["hww2l2v_13TeV_em_0j",
-        "hww2l2v_13TeV_em_1j",
-        "hww2l2v_13TeV_em_2j"]
 
 from LatinoAnalysis.Tools.commonTools import getSampleFiles, getBaseW, addSampleWeight
 
