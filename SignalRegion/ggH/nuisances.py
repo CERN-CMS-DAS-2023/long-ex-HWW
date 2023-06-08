@@ -199,17 +199,17 @@ nuisances['eff_m'] = {
     'samples': dict((skey, ['ttHMVA_2l_mu_SF_Up', 'ttHMVA_2l_mu_SF_Down']) for skey in mc_emb)
 }
 
-nuisances['muonpt'] = {
-    'name': 'CMS_scale_m_2018',
-    'kind': 'suffix',
-    'type': 'shape',
-    'mapUp': 'MupTup',
-    'mapDown': 'MupTdo',
-    'samples': dict((skey, ['1', '1']) for skey in mc if skey not in ['VgS', 'Vg']),
-    'folderUp': makeMCDirectory('MupTup_suffix'),
-    'folderDown': makeMCDirectory('MupTdo_suffix'),
-    'AsLnN': '1'
-}
+# nuisances['muonpt'] = {
+#     'name': 'CMS_scale_m_2018',
+#     'kind': 'suffix',
+#     'type': 'shape',
+#     'mapUp': 'MupTup',
+#     'mapDown': 'MupTdo',
+#     'samples': dict((skey, ['1', '1']) for skey in mc if skey not in ['VgS', 'Vg']),
+#     'folderUp': makeMCDirectory('MupTup_suffix'),
+#     'folderDown': makeMCDirectory('MupTdo_suffix'),
+#     'AsLnN': '1'
+# }
 
 if useEmbeddedDY:
   nuisances['muonpt_emb'] = {
