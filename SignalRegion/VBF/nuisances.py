@@ -165,17 +165,17 @@ nuisances['eff_e'] = {
     'samples': dict((skey, ['SFweightEleUp', 'SFweightEleDown']) for skey in mc_emb)
 }
 
-nuisances['electronpt'] = {
-    'name': 'CMS_scale_e_2018',
-    'kind': 'suffix',
-    'type': 'shape',
-    'mapUp': 'ElepTup',
-    'mapDown': 'ElepTdo',
-    'samples': dict((skey, ['1', '1']) for skey in mc if skey not in ['VgS', 'Vg']),
-    'folderUp': makeMCDirectory('ElepTup_suffix'),
-    'folderDown': makeMCDirectory('ElepTdo_suffix'),
-    'AsLnN': '1'
-}
+# nuisances['electronpt'] = {
+#     'name': 'CMS_scale_e_2018',
+#     'kind': 'suffix',
+#     'type': 'shape',
+#     'mapUp': 'ElepTup',
+#     'mapDown': 'ElepTdo',
+#     'samples': dict((skey, ['1', '1']) for skey in mc if skey not in ['VgS', 'Vg']),
+#     'folderUp': makeMCDirectory('ElepTup_suffix'),
+#     'folderDown': makeMCDirectory('ElepTdo_suffix'),
+#     'AsLnN': '1'
+# }
 
 if useEmbeddedDY:
   nuisances['electronpt_emb'] = {
@@ -199,17 +199,17 @@ nuisances['eff_m'] = {
     'samples': dict((skey, ['ttHMVA_2l_mu_SF_Up', 'ttHMVA_2l_mu_SF_Down']) for skey in mc_emb)
 }
 
-nuisances['muonpt'] = {
-    'name': 'CMS_scale_m_2018',
-    'kind': 'suffix',
-    'type': 'shape',
-    'mapUp': 'MupTup',
-    'mapDown': 'MupTdo',
-    'samples': dict((skey, ['1', '1']) for skey in mc if skey not in ['VgS', 'Vg']),
-    'folderUp': makeMCDirectory('MupTup_suffix'),
-    'folderDown': makeMCDirectory('MupTdo_suffix'),
-    'AsLnN': '1'
-}
+# nuisances['muonpt'] = {
+#     'name': 'CMS_scale_m_2018',
+#     'kind': 'suffix',
+#     'type': 'shape',
+#     'mapUp': 'MupTup',
+#     'mapDown': 'MupTdo',
+#     'samples': dict((skey, ['1', '1']) for skey in mc if skey not in ['VgS', 'Vg']),
+#     'folderUp': makeMCDirectory('MupTup_suffix'),
+#     'folderDown': makeMCDirectory('MupTdo_suffix'),
+#     'AsLnN': '1'
+# }
 
 if useEmbeddedDY:
   nuisances['muonpt_emb'] = {
