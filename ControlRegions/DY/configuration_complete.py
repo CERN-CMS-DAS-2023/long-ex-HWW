@@ -20,7 +20,7 @@ cutsFile = 'cuts.py'
 samplesFile = 'samples_complete.py' 
 
 # file with list of samples
-plotFile = 'plot.py' 
+plotFile = 'plot_complete.py' 
 
 # luminosity to normalize to (in 1/fb)
 lumi = 59.74
