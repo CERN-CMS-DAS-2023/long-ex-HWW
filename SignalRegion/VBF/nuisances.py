@@ -177,18 +177,18 @@ nuisances['eff_e'] = {
 #     'AsLnN': '1'
 # }
 
-if useEmbeddedDY:
-  nuisances['electronpt_emb'] = {
-    'name': 'CMS_scale_e_2018',
-    'kind': 'suffix',
-    'type': 'shape',
-    'mapUp' : 'ElepTup',
-    'mapDown': 'ElepTdo',
-    'samples': {'Dyemb': ['1', '1']},
-    'folderUp': treeBaseDir+'/Embedding2018_102X_nAODv6_Full2018v6/DATAl1loose2018v6__l2loose__l2tightOR2018v6__Embedding__EmbElepTup_suffix/',
-    'folderDown': treeBaseDir+'/Embedding2018_102X_nAODv6_Full2018v6/DATAl1loose2018v6__l2loose__l2tightOR2018v6__Embedding__EmbElepTdo_suffix/',
-    'AsLnN': '1'
-  }
+# if useEmbeddedDY:
+#   nuisances['electronpt_emb'] = {
+#     'name': 'CMS_scale_e_2018',
+#     'kind': 'suffix',
+#     'type': 'shape',
+#     'mapUp' : 'ElepTup',
+#     'mapDown': 'ElepTdo',
+#     'samples': {'Dyemb': ['1', '1']},
+#     'folderUp': treeBaseDir+'/Embedding2018_102X_nAODv6_Full2018v6/DATAl1loose2018v6__l2loose__l2tightOR2018v6__Embedding__EmbElepTup_suffix/',
+#     'folderDown': treeBaseDir+'/Embedding2018_102X_nAODv6_Full2018v6/DATAl1loose2018v6__l2loose__l2tightOR2018v6__Embedding__EmbElepTdo_suffix/',
+#     'AsLnN': '1'
+#   }
 
 ##### Muon Efficiency and energy scale
 
@@ -211,18 +211,18 @@ nuisances['eff_m'] = {
 #     'AsLnN': '1'
 # }
 
-if useEmbeddedDY:
-  nuisances['muonpt_emb'] = {
-    'name': 'CMS_scale_m_2018',
-    'kind': 'suffix',
-    'type': 'shape',
-    'mapUp' : 'MupTup',
-    'mapDown': 'MupTdo',
-    'samples': {'Dyemb': ['1', '1']},
-    'folderUp': treeBaseDir+'/Embedding2018_102X_nAODv6_Full2018v6/DATAl1loose2018v6__l2loose__l2tightOR2018v6__Embedding__EmbMupTup_suffix/',
-    'folderDown': treeBaseDir+'/Embedding2018_102X_nAODv6_Full2018v6/DATAl1loose2018v6__l2loose__l2tightOR2018v6__Embedding__EmbMupTdo_suffix/',
-    'AsLnN': '1'
-  }
+# if useEmbeddedDY:
+#   nuisances['muonpt_emb'] = {
+#     'name': 'CMS_scale_m_2018',
+#     'kind': 'suffix',
+#     'type': 'shape',
+#     'mapUp' : 'MupTup',
+#     'mapDown': 'MupTdo',
+#     'samples': {'Dyemb': ['1', '1']},
+#     'folderUp': treeBaseDir+'/Embedding2018_102X_nAODv6_Full2018v6/DATAl1loose2018v6__l2loose__l2tightOR2018v6__Embedding__EmbMupTup_suffix/',
+#     'folderDown': treeBaseDir+'/Embedding2018_102X_nAODv6_Full2018v6/DATAl1loose2018v6__l2loose__l2tightOR2018v6__Embedding__EmbMupTdo_suffix/',
+#     'AsLnN': '1'
+#   }
 
 ##### Jet energy scale
 jes_systs = ['JESAbsolute','JESAbsolute_2018','JESBBEC1','JESBBEC1_2018','JESEC2','JESEC2_2018','JESFlavorQCD','JESHF','JESHF_2018','JESRelativeBal','JESRelativeSample_2018']
