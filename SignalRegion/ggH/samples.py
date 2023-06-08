@@ -195,7 +195,7 @@ files = nanoGetSampleFiles(mcDirectory, 'TTTo2L2Nu') + \
 samples['top'] = {
     'name': files,
     'weight': mcCommonWeight+embed_tautauveto,
-    'FilesPerJob': 2,
+    'FilesPerJob': 3,
 }
 
 addSampleWeight(samples,'top','TTTo2L2Nu','Top_pTrw')
@@ -431,4 +431,7 @@ for _, sd in DataRun:
     files = nanoGetSampleFiles(dataDirectory, pd + '_' + sd)
     samples['DATA']['name'].extend(files)
     samples['DATA']['weights'].extend([DataTrig[pd]] * len(files))
+
+
+
 
