@@ -100,10 +100,10 @@ mcCommonWeight = 'XSWeight*SFweight*PromptGenLepMatch2l*METFilter_MC'
 
 ###### DY #######
 
-useEmbeddedDY = True
-useDYtt = False
+useEmbeddedDY = False
+useDYtt = True
 
-embed_tautauveto = '' #Setup
+embed_tautauveto = ''
 if useEmbeddedDY:
   embed_tautauveto = '*embed_tautauveto'
 
@@ -195,7 +195,7 @@ files = nanoGetSampleFiles(mcDirectory, 'TTTo2L2Nu') + \
 samples['top'] = {
     'name': files,
     'weight': mcCommonWeight+embed_tautauveto,
-    'FilesPerJob': 3,
+    'FilesPerJob': 4,
 }
 
 addSampleWeight(samples,'top','TTTo2L2Nu','Top_pTrw')
@@ -205,7 +205,7 @@ addSampleWeight(samples,'top','TTTo2L2Nu','Top_pTrw')
 samples['WW'] = {
     'name': nanoGetSampleFiles(mcDirectory, 'WWTo2L2Nu'),
     'weight': mcCommonWeight+embed_tautauveto + '*nllW',
-    'FilesPerJob': 3
+    'FilesPerJob': 4
 }
 
 samples['WWewk'] = {
@@ -301,7 +301,7 @@ samples['ggH_hww'] = {
     'name': nanoGetSampleFiles(mcDirectory, 'GluGluHToWWTo2L2Nu_M125'),
     #'name': nanoGetSampleFiles(mcDirectory, 'GluGluHToWWTo2L2Nu_M125')+nanoGetSampleFiles(mcDirectory, 'GGHjjToWWTo2L2Nu_minloHJJ_M125'),
     'weight': mcCommonWeight,
-    'FilesPerJob': 1,
+    'FilesPerJob': 2,
 }
 addSampleWeight(samples, 'ggH_hww', 'GluGluHToWWTo2L2Nu_M125', 'Weight2MINLO*1092.7640/1073.2567') #only non GE2J categories with the weight to NNLOPS and renormalize integral                          
 
@@ -352,7 +352,7 @@ signals.append('WH_hww')
 samples['ttH_hww'] = {
     'name':   nanoGetSampleFiles(mcDirectory, 'ttHToNonbb_M125'),
     'weight': mcCommonWeight,
-    'FilesPerJob': 1
+    'FilesPerJob': 2
 }
 
 signals.append('ttH_hww')
@@ -435,3 +435,4 @@ for _, sd in DataRun:
 
 
 
+ 

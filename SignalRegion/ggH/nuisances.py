@@ -259,7 +259,7 @@ for js in jes_systs:
                 'samples': dict((skey, ['1', '1']) for skey in mc),
                 'folderUp'   : makeMCDirectory(folderup), 
                 'folderDown' : makeMCDirectory(folderdo),
-                #'AsLnN': '1'
+                'AsLnN': '1'
   }
   
 ##### MET energy scale
